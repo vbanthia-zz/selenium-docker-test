@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require 'selenium-webdriver'
+require 'pry'
+
+driver = Selenium::WebDriver.for :chrome
+sleep 2
+
+driver.navigate.to 'http://www.docker.com'
+sleep 2
+
+if (driver.title == "Docker - Build, Ship, and Run Any App, Anywhere")
+  puts 'running okay!'
+else
+  puts 'running not okay!'
+end
+
+driver.quit
