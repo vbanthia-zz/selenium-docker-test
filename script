@@ -5,7 +5,7 @@ require 'selenium-webdriver'
 host = ENV['WEBDRIVER_HOST']
 
 begin
-  driver = Selenium::WebDriver.for :remote  url: "http://#{ host }/wd/hub" desired_capabilities: :chrome
+  driver = Selenium::WebDriver.for :remote  :url => "http://#{ host }/wd/hub" :desired_capabilities => :chrome
   driver.navigate.to 'http://www.docker.com'
    
   if (driver.title == "Docker - Build, Ship, and Run Any App, Anywhere")
