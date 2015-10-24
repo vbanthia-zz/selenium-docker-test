@@ -1,18 +1,18 @@
 #!/usr/bin/env ruby
 
 require 'selenium-webdriver'
-require 'pry'
 
-driver = Selenium::WebDriver.for :chrome
-sleep 2
+host = ENV['WEBDRIVER_HOST']
 
-driver.navigate.to 'http://www.docker.com'
-sleep 2
-
-if (driver.title == "Docker - Build, Ship, and Run Any App, Anywhere")
-  puts 'running okay!'
-else
-  puts 'running not okay!'
+begin
+  driver = Selenium::WebDriver.for :remote  url: "http://#{ host }/wd/hub" desired_capabilities: :chrome
+  driver.navigate.to 'http://www.docker.com'
+   
+  if (driver.title == "Docker - Build, Ship, and Run Any App, Anywhere")
+    puts 'running okay!'
+  else
+    puts 'running not okay!'
+  end
+ensure
+  driver.quit
 end
-
-driver.quit
