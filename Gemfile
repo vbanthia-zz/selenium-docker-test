@@ -1,4 +1,9 @@
 source "https://rubygems.org"
 
 gem 'selenium-webdriver'
-gem 'pry'
+gem 'rspec'
+gem 'rake'
+
+group :development do
+  gem 'pry'
+end
