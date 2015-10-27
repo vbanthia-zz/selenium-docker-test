@@ -1,3 +1,4 @@
 --color
 --require spec_helper
+--format html --out result.html
 --format documentation

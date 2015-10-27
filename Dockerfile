@@ -2,9 +2,15 @@
 FROM ruby:2.2
 
 # throw errors if Gemfile has been modified since Gemfile.lock
-RUN bundle config --global frozen 1
+RUN bundle config --global frozen 1 && \
+    useradd --system \
+            --no-create-home \
+            --shell /usr/sbin/nologin \
+            test-runner && \
+    mkdir -p /usr/src/app
 
-RUN mkdir -p /usr/src/app
+USER test-runnner
+
 WORKDIR /usr/src/app
 
 COPY Gemfile /usr/src/app/
