@@ -7,10 +7,10 @@ RUN bundle config --global frozen 1
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-ONBUILD COPY Gemfile /usr/src/app/
-ONBUILD COPY Gemfile.lock /usr/src/app/
-ONBUILD RUN bundle install
+COPY Gemfile /usr/src/app/
+COPY Gemfile.lock /usr/src/app/
+RUN bundle install
 
-ONBUILD COPY . /usr/src/app
+COPY . /usr/src/app
 
-CMD ["./scripts/jenkins/run_integration_test.sh"]
+ENTRYPOINT ["./scripts/jenkins/run_integration_test.sh"]
