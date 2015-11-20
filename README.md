@@ -12,7 +12,7 @@ This is a test repository to run selenium test inside docker container. This rep
 git clone https://github.com/vbanthia/selenium-docker-test.git
 cd selenium-docker-test
 
-docker build --rm -t selenium-test .
+docker build --rm -t selenium-test ./Dockerfile
 ```
 
 ### Start selenium server
@@ -27,7 +27,7 @@ docker run -d --name selenium-server selenium/standalone-chrome
 docker run --name selenium-test           \
            --link selenium-server:server  \
            -e "WEBDRIVER_HOST=server"     \
-           -e "FEATURE_TYPE=feature_one"   \
+           -e "FEATURE_TYPE=feature_one"  \
            selenium-test
 ```
 
